@@ -81,8 +81,8 @@ class Passaro:
         retangulo = imagem_rotacionada.get_rect(center=posicao_centro_imagem)
         tela.blit(imagem_rotacionada, retangulo.topleft)
 
-        def get_mask(self):
-            return pygame.mask.from_surface(self.imagem)
+    def get_mask(self):
+     return pygame.mask.from_surface(self.imagem)
   
 
 class Cano:
@@ -154,7 +154,7 @@ class Chao:
     
 def desenhar_tela(tela, passaros, canos, chao, pontos):
     tela.blit(IMAGEM_BACKGROUND, (0,0))
-    for passaro in passaro:
+    for passaro in passaros:
         passaro.desenhar(tela)
     for cano in canos:
         cano.desenhar(tela)
@@ -174,7 +174,7 @@ def main ():
 
     jogando = True
     while jogando:
-        relogio.tick(60)
+        relogio.tick(30)
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 rodando = False
@@ -209,7 +209,7 @@ def main ():
         for cano in remover_canos:
             canos.remover(cano)
                 
-        for i, passaro in enumerate (passaro):
+        for i, passaro in enumerate (passaros):
             if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
                 passaros.pop(i)
             
